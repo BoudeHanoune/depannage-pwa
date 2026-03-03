@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dépannage proche</title>
+
+  <link rel="icon" href="data:,">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#111827" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+  <div id="boot" class="boot">
+    <div>
+      <div>Chargement…</div>
+      <div id="bootMsg" class="muted small" style="margin-top:8px;"></div>
+    </div>
+  </div>
+
+  <div id="app" hidden>
+    <header class="topbar">
+      <div class="brand">🚗 Dépannage proche</div>
+      <div class="actions">
+        <span id="userLabel" class="muted"></span>
+        <button id="btnLogout" class="btn secondary" hidden>Se déconnecter</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h1>Créer une alerte</h1>
+
+        <div class="card">
+          <label>Message</label>
+          <input id="message" type="text" placeholder="Ex: Besoin d’une poussée, batterie morte…" />
+          <div class="row">
+            <button id="btnMyPos" class="btn">📍 Prendre ma position</button>
+            <button id="btnCreateAlert" class="btn danger">🚨 Envoyer l’alerte</button>
+          </div>
+          <p class="muted small">Astuce : sur mobile, tu pourras “Ajouter à l’écran d’accueil”.</p>
+        </div>
+
+        <h2>Alertes proches</h2>
+        <div class="card">
+          <div class="row">
+            <label>Rayon (km)</label>
+            <input id="radiusKm" type="number" min="1" max="50" value="5" />
+            <button id="btnRefresh" class="btn secondary">↻ Rafraîchir</button>
+          </div>
+          <div id="alertsList" class="list"></div>
+        </div>
+      </section>
+
+      <section class="mapwrap">
+        <div id="map"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="authModal" class="modal" style="display:none">
+    <div class="modalBox">
+      <h2>Connexion / Inscription</h2>
+      <p class="muted small">Pour éviter le spam, le MVP demande un compte.</p>
+
+      <label>Email</label>
+      <input id="authEmail" type="email" placeholder="ton@email.com" />
+
+      <label>Mot de passe</label>
+      <input id="authPassword" type="password" placeholder="••••••••" />
+
+      <div class="row">
+        <button id="btnLogin" class="btn">Se connecter</button>
+        <button id="btnSignup" class="btn secondary">S’inscrire</button>
+      </div>
+
+      <p id="authError" class="error"></p>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="module" src="supabaseClient.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

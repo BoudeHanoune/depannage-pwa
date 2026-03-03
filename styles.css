@@ -1,0 +1,85 @@
+:root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+body { margin: 0; background: #0b1220; color: #e5e7eb; }
+a { color: inherit; }
+
+.topbar{
+  display:flex; justify-content:space-between; align-items:center;
+  padding:12px 16px; background:#111827; border-bottom:1px solid #1f2937;
+}
+.brand{ font-weight:700; }
+.actions{ display:flex; gap:12px; align-items:center; }
+
+.layout{
+  display:grid; grid-template-columns: 420px 1fr;
+  gap: 12px; padding: 12px;
+}
+@media (max-width: 900px){
+  .layout{ grid-template-columns: 1fr; }
+  .mapwrap{ height: 55vh; }
+}
+
+.panel h1, .panel h2{ margin: 10px 0; }
+.card{
+  background:#0f172a; border:1px solid #1f2937; border-radius:12px;
+  padding:12px; margin-bottom:12px;
+}
+label{ display:block; margin:8px 0 6px; }
+input{
+  width:100%; box-sizing:border-box; padding:10px 12px;
+  border-radius:10px; border:1px solid #243043; background:#0b1220; color:#e5e7eb;
+}
+.row{ display:flex; gap:10px; margin-top:10px; }
+.row > *{ flex:1; }
+
+.btn{
+  padding:10px 12px; border-radius:10px; border:1px solid #334155;
+  background:#111827; color:#e5e7eb; cursor:pointer;
+}
+.btn.secondary{ background:#0b1220; }
+.btn.danger{ border-color:#7f1d1d; }
+.btn:active{ transform: translateY(1px); }
+
+.muted{ color:#9ca3af; }
+.small{ font-size: 12px; }
+.error{ color:#fca5a5; }
+
+.mapwrap{ min-height: calc(100vh - 70px); }
+#map{
+  width:100%; height:100%;
+  border:1px solid #1f2937; border-radius:12px;
+  overflow:hidden;
+}
+
+.list{ display:flex; flex-direction:column; gap:10px; margin-top:10px; }
+.item{
+  background:#0b1220; border:1px solid #243043; border-radius:12px; padding:10px;
+}
+.item .meta{ display:flex; justify-content:space-between; gap:10px; }
+.badge{ font-size:12px; color:#9ca3af; }
+
+/* Modal */
+.modal{
+  position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+  background: rgba(0,0,0,0.65);
+  z-index: 999999;
+}
+.modalBox{
+  width:min(420px, 92vw);
+  background:#0f172a; border:1px solid #1f2937; border-radius:14px;
+  padding:14px;
+}
+
+/* Anti-flash */
+#app[hidden] { display: none !important; }
+
+.boot{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0b1220;
+  color: #e5e7eb;
+  z-index: 999998;
+}
+.boot.hidden{ display:none !important; }
